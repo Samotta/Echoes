@@ -1,5 +1,6 @@
 #include "Tower.h"
 #include "Components/StaticMeshComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 ATower::ATower()
 {
@@ -29,7 +30,7 @@ void ATower::Tick(float DeltaTime)
     
 void ATower::Fire_Implementation()
 {
-    // comportamento di default, tutte le torri sparano così
-    // se una torre figlia fa override in Blueprint, questo non viene chiamato
     UE_LOG(LogTemp, Warning, TEXT("Tower firing!"));
+
+    // UGameplayStatics::ApplyDamage(TargetEnemy, Damage, GetInstigatorController(), this, UDamageType::StaticClass());
 }

@@ -1,5 +1,9 @@
 #pragma once
 
+#include "NavigationSystem.h"
+#include "NavMesh/NavMeshBoundsVolume.h"
+#include "Engine/StaticMeshActor.h"
+
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "GridManager.generated.h"
@@ -57,6 +61,12 @@ public:
     UPROPERTY(BlueprintReadOnly, Category = "Grid")
     TArray<FGridCell> GridCells;
 
+    UPROPERTY(BlueprintReadOnly, Category = "Grid")
+    FVector StartPoint;
+
+    UPROPERTY(BlueprintReadOnly, Category = "Grid")
+    FVector EndPoint;
+
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Grid|Path")
     TArray<FIntPoint> PathCoordinates; 
 
@@ -95,6 +105,14 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Tower")
     TObjectPtr<ATower> GhostTowerInstance;
 
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Navigation")
+    ANavMeshBoundsVolume* NavMeshVolume; // must be assigned in the editor
+
+    // Assign Engine/BasicShapes/Cube in the editor.
+    // Cubes are spawned on non-walkable cells to block the NavMesh.
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Navigation")
+    UStaticMesh* NavBlockerMesh;
+
     // Called by the player controller when the player clicks on the grid
     UFUNCTION(BlueprintCallable, Category = "Grid|Selection")
     bool TrySelectCell(FVector WorldPosition);
@@ -124,6 +142,9 @@ public:
     UFUNCTION(BlueprintCallable, Category = "Grid|Path")
     void GenerateProceduralPath(FRandomStream& Rand, FIntPoint Start);
 
+    UFUNCTION(BlueprintCallable, Category = "Navigation")
+    void GenerateNavMesh();
+
 protected:
     virtual void BeginPlay() override;
 
@@ -133,4 +154,8 @@ private:
     bool DFSWalk(TArray<FIntPoint>& Path, TSet<FIntPoint>& Visited,
                  const TArray<FIntPoint>& SegmentDirs, const TArray<int32>& SegmentLengths,
                  int32 SegmentIndex, int32 StepsInSegment, FRandomStream& Rand) const;
+
+    // Blocker cubes spawned on non-walkable cells to prevent NavMesh from covering them
+    UPROPERTY()
+    TArray<AStaticMeshActor*> NavBlockers;
 };

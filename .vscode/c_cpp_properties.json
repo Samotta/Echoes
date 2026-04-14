@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "EchoesEditor Editor Win64 Development (Echoes)",
+            "compilerPath": "E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "msvc-x64",
+            "compileCommands": [
+                "E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes.json"
+            ]
+        },
+        {
+            "name": "Win32",
+            "compilerPath": "E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "msvc-x64",
+            "compileCommands": [
+                "E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Default.json"
+            ]
+        }
+    ],
+    "version": 4
+}

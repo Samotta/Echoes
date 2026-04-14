@@ -1,0 +1,122 @@
+[
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\Echoes.Build.cs",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\Echoes.cpp",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\Echoes.h",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\Enemy.cpp",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\Enemy.h",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\EnemyAIController.cpp",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\EnemyAIController.h",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\GridManager.cpp",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\GridManager.h",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\IsometricCamera.cpp",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\IsometricCamera.h",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\Tower.cpp",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\Tower.h",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\TowerDataAsset.cpp",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	},
+	{
+		"file": "E:\\Unreal Projects\\Echoes\\Source\\Echoes\\TowerDataAsset.h",
+		"arguments": [
+			"E:\\Programmi\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+			"@E:\\Unreal Projects\\Echoes\\.vscode\\compileCommands_Echoes\\Echoes.1.rsp"
+		],
+		"directory": "E:\\Programmi\\UE_5.7\\Engine\\Source"
+	}
+]

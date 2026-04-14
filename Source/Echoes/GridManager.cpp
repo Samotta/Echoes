@@ -4,10 +4,15 @@
 #include "Algo/Reverse.h"
 
 #include "Tower.h"
+#include "NavigationSystem.h"
+#include "Engine/StaticMeshActor.h"
+#include "Components/StaticMeshComponent.h"
 
 AGridManager::AGridManager()
 {
     PrimaryActorTick.bCanEverTick = false;
+    USceneComponent* SceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+    RootComponent = SceneRoot;
 }
 
 void AGridManager::BeginPlay()
@@ -21,6 +26,22 @@ void AGridManager::BeginPlay()
     FIntPoint Start = FIntPoint(Rand.RandRange(1, GridColumns - 2), Rand.RandRange(1, GridRows - 2));
 
     GenerateProceduralPath(Rand, Start);
+
+    GenerateNavMesh();
+
+    // Get start and end world positions for easier access (e.g. by the enemy spawner)
+    for (const FGridCell& Cell : GridCells)
+    {
+        if (Cell.bIsStart)
+        {
+            StartPoint = Cell.WorldPosition + FVector(CellSize * 0.5f, CellSize * 0.5f, 0.f);
+        }
+        else if (Cell.bIsEnd)
+        {
+            EndPoint = Cell.WorldPosition + FVector(CellSize * 0.5f, CellSize * 0.5f, 0.f);
+        }
+    }
+
 }
 
 void AGridManager::GenerateGrid()
@@ -294,6 +315,87 @@ void AGridManager::GenerateProceduralPath(FRandomStream& Rand, FIntPoint Start)
     BuildPath();
 }
 
+void AGridManager::GenerateNavMesh()
+{
+    UNavigationSystemV1* NavSys = FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());
+    if (!NavSys || !NavMeshVolume || !NavBlockerMesh)
+    {
+        UE_LOG(LogTemp, Error, TEXT("GenerateNavMesh: missing NavMeshVolume or NavBlockerMesh."));
+        return;
+    }
+
+    // Resize the NavMeshBoundsVolume to cover the entire grid
+    {
+        float WorldSizeX = GridColumns * CellSize;
+        float WorldSizeY = GridRows    * CellSize;
+
+        NavMeshVolume->SetActorLocation(GetActorLocation() + FVector(
+            WorldSizeX * 0.5f,
+            WorldSizeY * 0.5f,
+            0.f
+        ));
+
+        // Default NavMeshBoundsVolume brush is 200x200x200, so divide by 200
+        NavMeshVolume->SetActorScale3D(FVector(
+            WorldSizeX / 200.f,
+            WorldSizeY / 200.f,
+            2.f
+        ));
+
+        NavSys->OnNavigationBoundsUpdated(NavMeshVolume);
+    }
+
+    // Destroy any blockers from a previous call
+    for (AStaticMeshActor* Blocker : NavBlockers)
+        if (Blocker) Blocker->Destroy();
+    NavBlockers.Empty();
+
+    // Spawn a cube on every non-walkable cell to block the NavMesh
+    FActorSpawnParameters SpawnParams;
+    SpawnParams.Owner = this;
+    SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+    for (const FGridCell& Cell : GridCells)
+    {
+        if (Cell.bIsWalkable) continue;
+
+        FVector Center = Cell.WorldPosition + FVector(CellSize * 0.5f, CellSize * 0.5f, 0.f);
+
+        AStaticMeshActor* Blocker = GetWorld()->SpawnActor<AStaticMeshActor>(
+            AStaticMeshActor::StaticClass(),
+            Center,
+            FRotator::ZeroRotator,
+            SpawnParams
+        );
+
+        if (!Blocker) continue;
+
+        UStaticMeshComponent* MeshComp = Blocker->GetStaticMeshComponent();
+        MeshComp->SetStaticMesh(NavBlockerMesh);
+
+        // Scale to fill exactly one cell (default Cube is 100x100x100)
+        MeshComp->SetWorldScale3D(FVector(CellSize / 100.f, CellSize / 100.f, CellSize / 100.f));
+
+        MeshComp->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+        MeshComp->SetCollisionResponseToAllChannels(ECR_Block);
+
+        MeshComp->SetWorldScale3D(FVector(
+            CellSize / 100.f,
+            CellSize / 100.f,
+            CellSize / 100.f
+        ));
+
+        MeshComp->SetVisibility(false);
+        MeshComp->SetHiddenInGame(true);
+
+        NavBlockers.Add(Blocker);
+    }
+
+    // Single rebuild after all blockers are placed
+    NavSys->Build();
+
+    UE_LOG(LogTemp, Warning, TEXT("GenerateNavMesh: spawned %d blockers, NavMesh rebuilt."), NavBlockers.Num());
+}
 
 bool AGridManager::TrySelectCell(FVector WorldPosition)
 {
