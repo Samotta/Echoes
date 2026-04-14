@@ -16,6 +16,10 @@ The project is in early development. What is currently implemented:
 - **Ghost tower preview** — transparent tower preview that follows the cursor before placement
 - **Tower selection menu** — scalable UI menu for selecting between different tower types
 - **Orbital camera** — top-down perspective camera with zoom and rotation support
+- **Enemy system** — pawns with configurable health and movement speed, multicast death delegate, and damage support via Unreal's TakeDamage pipeline
+- **Enemy AI & pathfinding** — AI controller drives enemies along the procedurally generated path waypoint by waypoint using the NavMesh; enemies that reach the end of the path are automatically destroyed
+- **NavMesh generation** — at runtime, invisible blocker meshes are spawned on all non-walkable cells to constrain the NavMesh to the generated path, then rebuilt before enemies are spawned
+- **Enemy spawner** — (wave configuration and spawn interval — in progress)
 
 ## Technologies
 - Unreal Engine 5
@@ -39,3 +43,8 @@ Two examples of procedurally generated paths — blue: buildable cells, green: w
 <img width="2558" height="1392" alt="Screenshot 2026-04-10 011218" src="https://github.com/user-attachments/assets/7715702e-deba-47ee-b2a9-b11f3cd6c451" />
 
 *Tower selection menu with multiple tower types*
+
+### Enemies & Pathfinding
+https://github.com/user-attachments/assets/7cbe6544-c6ee-4477-add2-2d318da11626
+
+*Enemies spawning and following the procedurally generated path*
